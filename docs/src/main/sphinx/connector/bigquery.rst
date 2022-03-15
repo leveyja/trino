@@ -42,7 +42,7 @@ To connect to BigQuery, you need:
   Google Cloud API service endpoint. This endpoint uses HTTPS, or port 443.
 * To configure BigQuery so that the Trino coordinator and workers have `permissions
   in BigQuery <https://cloud.google.com/bigquery/docs/reference/storage#permissions>`_.
-* To set up authentication. Your authentiation options differ depending on whether
+* To set up authentication. Your authentication options differ depending on whether
   you are using Dataproc/Google Compute Engine (GCE) or not.
 
   **On Dataproc/GCE** the authentication is done from the machine's role.

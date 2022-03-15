@@ -36,6 +36,8 @@ import static org.testng.Assert.assertEquals;
 // Some tests here create colliding names which can cause any other concurrent test to fail.
 @Test(singleThreaded = true)
 public class TestBigQueryCaseInsensitiveMapping
+    // https://github.com/trinodb/trino/issues/7864 - "BigQuery is out of scope since it doesn't use / support file-based mappings."
+    // should we remove this (v) TODO?
         // TODO extends BaseCaseInsensitiveMappingTest - https://github.com/trinodb/trino/issues/7864
         extends AbstractTestQueryFramework
 {
