@@ -37,6 +37,7 @@ import static com.google.common.collect.ImmutableList.toImmutableList;
 import static com.google.common.collect.Streams.stream;
 import static io.trino.plugin.mysql.MySqlQueryRunner.createMySqlQueryRunner;
 import static io.trino.testing.sql.TestTable.fromColumns;
+import static io.trino.testing.sql.TestTable.randomTableSuffix;
 import static io.trino.tpch.TpchTable.ORDERS;
 import static java.lang.Math.min;
 import static java.lang.String.format;
@@ -79,10 +80,11 @@ public abstract class BaseTestMySqlTableStatisticsTest
     }
 
     @Override
-    @Test
+    @Test(invocationCount = 5, threadPoolSize = 5)
     public void testNotAnalyzed()
     {
-        String tableName = "test_not_analyzed";
+        // assertEventually(() -> {
+        String tableName = "test_not_analyzed_" + randomTableSuffix();
         assertUpdate("DROP TABLE IF EXISTS " + tableName);
         computeActual(format("CREATE TABLE %s AS SELECT * FROM tpch.tiny.orders", tableName));
         try {
@@ -108,6 +110,7 @@ public abstract class BaseTestMySqlTableStatisticsTest
         finally {
             assertUpdate("DROP TABLE " + tableName);
         }
+        // });
     }
 
     @Override

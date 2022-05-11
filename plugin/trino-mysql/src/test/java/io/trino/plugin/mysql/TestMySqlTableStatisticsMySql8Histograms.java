@@ -26,7 +26,6 @@ import static io.trino.testing.sql.TestTable.fromColumns;
 import static java.lang.String.format;
 import static java.lang.String.join;
 
-@Test(singleThreaded = true)
 public class TestMySqlTableStatisticsMySql8Histograms
         extends BaseTestMySqlTableStatisticsTest
 {
